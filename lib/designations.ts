@@ -74,5 +74,5 @@ export async function designationsFromDonations(): Promise<any[]> {
     return designations;
   }, {})
 
-  return designations
+  return Object.values(designations)
 }
