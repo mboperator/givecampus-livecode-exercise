@@ -1,16 +1,17 @@
-import {load} from "@/lib/csv";
+"use client";
+import {useLeaderboard} from "@/lib/useLeaderboard";
 
-export default async function Home() {
-  const data = await load('/data.csv');
+export default function Home() {
+  const { data } = useLeaderboard();
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
-      <h1 className="text-6xl">GiveCampus</h1>
-      <div className="flex flex-col flex-wrap">
+      <h1 className="text-3xl">GiveCampus Leaderboard</h1>
+      <div className="py-12 px-1 flex flex-col flex-wrap w-full">
         {data.map((item, index) => (
           <div key={index} className="m-4">
             <h2 className="text-2xl font-bold">{item.donor}</h2>
-            <p>{item.donation_amount}</p>
+            <p>{item.donationAmount}</p>
           </div>
         ))}
       </div>
